@@ -197,13 +197,16 @@
   .header-inner{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    padding:18px 0;
+    max-width:none;
+    padding:14px 20px;
+  }
+  @media (min-width:1440px){
+    .header-inner{padding:14px 40px;}
   }
   .logo{
     font-family:var(--font-mono);
     font-weight:700;
-    font-size:20px;
+    font-size:17px;
     color:var(--white);
     letter-spacing:1px;
   }
@@ -213,6 +216,7 @@
     display:flex;
     align-items:center;
     gap:var(--space-lg);
+    margin-left:auto;
   }
   .nav-links{
     display:flex;
@@ -220,10 +224,10 @@
   }
   .nav-links a{
     font-family:var(--font-sans);
-    font-size:14px;
-    font-weight:600;
+    font-size:12.5px;
+    font-weight:500;
     text-transform:uppercase;
-    letter-spacing:0.5px;
+    letter-spacing:0.8px;
     color:var(--gray-light);
     padding:8px 4px;
     position:relative;
@@ -246,9 +250,14 @@
     width:100%;
   }
 
-  .header-cta{display:flex;}
-  .header-cta.mobile-cta{display:none;}
-  .header-cta .btn{text-transform:uppercase;letter-spacing:0.5px;}
+  .header-cta{display:flex;margin-left:var(--space-lg);}
+  .header-cta.mobile-cta{display:none;margin-left:0;}
+  .header-cta .btn{
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    font-size:13px;
+    padding:12px 22px;
+  }
 
   .menu-toggle{
     display:none;
@@ -260,6 +269,7 @@
     align-items:center;
     justify-content:center;
     cursor:pointer;
+    margin-left:auto;
   }
   .menu-toggle span,
   .menu-toggle::before,
@@ -717,7 +727,7 @@
     .header-cta.mobile-cta .btn{width:100%;}
 
     .hero{padding:104px 0 48px;}
-    .hero-name{font-size:32px;}
+    .hero-name{font-size:34px;}
     .hero-role{font-size:18px;}
     .hero-code{font-size:12.5px;padding:var(--space-sm);}
     .hero-support{font-size:16px;}
@@ -739,11 +749,11 @@
   }
 
   @media (min-width:768px) and (max-width:1023px){
-    .hero-name{font-size:36px;}
+    .hero-name{font-size:40px;}
   }
 
   @media (min-width:1024px){
-    .hero-name{font-size:56px;}
+    .hero-name{font-size:62px;}
     .hero-role{font-size:22px;}
     .section-title{font-size:44px;}
   }
@@ -785,7 +795,7 @@
     <div class="container hero-inner">
       <div class="hero-text">
         <p class="terminal-line">"Olá, mundo". Eu sou</p>
-        <h1 class="hero-name">Arthur Stingnel Sousa</h1>
+        <h1 class="hero-name">Arthur Stingnel</h1>
         <p class="hero-role">&gt; Desenvolvedor Web</p>
 
         <pre class="hero-code"><code><span class="comment">// Dedicado e em constante evolução</span>
@@ -950,37 +960,49 @@
 
       <div class="cards-grid">
         <article class="card">
-          <div class="card-badge" aria-hidden="true">01</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg>
+          </div>
           <h3>Aprendizado Constante</h3>
           <p>Estou sempre estudando novas ferramentas e boas práticas para entregar projetos atualizados com o que há de melhor no desenvolvimento web.</p>
         </article>
 
         <article class="card">
-          <div class="card-badge" aria-hidden="true">02</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 4 12l5 6"/><path d="M15 6l5 6-5 6"/></svg>
+          </div>
           <h3>Código Organizado</h3>
           <p>Escrevo código limpo e estruturado, pensando em performance e em facilitar manutenções futuras.</p>
         </article>
 
         <article class="card">
-          <div class="card-badge" aria-hidden="true">03</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5Z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
+          </div>
           <h3>Comunicação Clara</h3>
           <p>Mantenho você informado em cada etapa do projeto, sem termos técnicos desnecessários e sem enrolação.</p>
         </article>
 
         <article class="card">
-          <div class="card-badge" aria-hidden="true">04</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
           <h3>Comprometimento</h3>
           <p>Trato cada projeto com a mesma dedicação, buscando entregar o melhor resultado possível dentro do combinado.</p>
         </article>
 
         <article class="card">
-          <div class="card-badge" aria-hidden="true">05</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg>
+          </div>
           <h3>Foco em Resultados</h3>
           <p>Cada decisão de design e código é pensada para gerar resultado real para o seu negócio, não apenas um site bonito.</p>
         </article>
 
         <article class="card">
-          <div class="card-badge" aria-hidden="true">06</div>
+          <div class="card-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><path d="M8 15l2.5 2.5L16 12"/></svg>
+          </div>
           <h3>Prazos Cumpridos</h3>
           <p>Organizo cada etapa do projeto para entregar dentro do prazo combinado, sem surpresas de última hora.</p>
         </article>
@@ -999,11 +1021,17 @@
 
       <div class="contact-ctas">
         <a href="https://wa.me/5527999872446" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Arthur Stingnel no WhatsApp (abre em nova aba)">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path fill="currentColor" stroke="none" d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .6.5.2.5.6 1.4.6 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.2-.3.3-.1.6.2.4.9 1.4 1.9 1.9.3.2.5.1.6-.1.2-.2.4-.5.6-.7.2-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.3.2.4.3 0 .2 0 .8-.3 1.2-.3.5-1.3.9-1.8.9-.5 0-1.2-.1-3-1.3-1.9-1.2-2.9-3-3-3.2-.1-.2-.7-1-.7-1.9 0-.9.4-1.3.6-1.5Z"/></svg>
           WhatsApp
         </a>
-        <a href="mailto:arthurstingnel.pro@gmail.com" class="btn btn-secondary" aria-label="Enviar e-mail para Arthur Stingnel">E-mail</a>
-        <a href="https://www.linkedin.com/in/arthurstingnel/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil do LinkedIn de Arthur Stingnel (abre em nova aba)">LinkedIn</a>
+        <a href="mailto:arthurstingnel.pro@gmail.com" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Enviar e-mail para Arthur Stingnel (abre em nova aba)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+          E-mail
+        </a>
+        <a href="https://www.linkedin.com/in/arthurstingnel/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil do LinkedIn de Arthur Stingnel (abre em nova aba)">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="6.4" y="9.5" width="2.3" height="8" fill="currentColor"/><circle cx="7.55" cy="6.4" r="1.35" fill="currentColor"/><path fill="currentColor" d="M11.5 17.5v-8h2.2v1.2c.5-.8 1.4-1.4 2.6-1.4 2 0 3.3 1.3 3.3 3.7v4.5h-2.3v-4.1c0-1.2-.5-2-1.6-2-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8v4.1h-2.4Z"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
   </section>
@@ -1015,7 +1043,7 @@
     <ul class="footer-social">
       <li><a href="https://www.linkedin.com/in/arthurstingnel/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Arthur Stingnel (abre em nova aba)">LinkedIn</a></li>
     </ul>
-    <p class="footer-copy">© 2026 Arthur Stingnel Sousa. Todos os direitos reservados.</p>
+    <p class="footer-copy">© 2026 Arthur Stingnel. Todos os direitos reservados.</p>
   </div>
 </footer>
 
