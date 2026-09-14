@@ -1,0 +1,129 @@
+1. HEADER / NAVEGAÇÃO
+
+Logo: AS.
+
+Menu:
+
+Sobre
+Serviços
+Projetos
+Contato
+
+Botão CTA (header): Contato
+
+2. HERO (estilo terminal / código)
+
+Linha de abertura (estilo terminal): "Olá, mundo". Eu sou
+
+Nome (destaque grande): Arthur Stingnel Sousa
+
+Cargo (estilo comando de terminal): > Desenvolvedor Web
+
+Linhas de apresentação (estilo comentário de código):
+
+// Dedicado e em constante evolução
+// desenvolvedor web com +2 anos me especializando na área.
+const LinkedIn = "arthurstingnel"
+
+Texto de apoio (abaixo, opcional — frase de efeito curta): Sites e landing pages modernos, rápidos e pensados para gerar resultado.
+
+Botão CTA (hero): Ver projetos → / Fale comigo →
+
+Indicador de scroll: SCROLL
+
+3. TAGS / FAIXA DE ESPECIALIDADES (marquee)
+
+Landing Pages · Sites Institucionais · E-commerce · Design Responsivo · Alta Conversão · UI / UX Moderno · SEO Otimizado · Performance Web
+
+4. SOBRE
+
+Eyebrow (texto pequeno acima do título): 01 — Perfil Profissional
+
+Título: Olá, sou Arthur Stingnel.
+
+Parágrafo de apresentação: Desenvolvedor web com mais de 2 anos me dedicando à área, com foco em criar sites e landing pages funcionais, bem estruturados e com boa experiência de uso. Cursando Sistemas de Informação no IFES — Colatina, venho construindo minha base técnica unindo teoria acadêmica, cursos especializados e prática constante em projetos reais.
+
+Bloco de informações (grid):
+
+	
+Experiência	+2 anos na área
+Formação Técnica	HTML e CSS — Curso em Vídeo
+Ensino Superior	Sistemas de Informação — IFES Colatina (cursando)
+Localização	Colatina, ES — Brasil
+
+Números de destaque (contadores):
+
+0+ Projetos entregues
+0% Satisfação dos clientes
+0+ Anos de experiência
+
+(Obs.: ajuste os números reais quando tiver dados de projetos/clientes concluídos.)
+
+5. SERVIÇOS
+
+Eyebrow: 02 — Serviços
+
+Título da seção: O que eu faço
+
+01 — Landing Pages Páginas focadas em conversão, com estrutura clara e chamadas para ação bem posicionadas, pensadas para transformar visitantes em contatos ou vendas.
+
+02 — Sites Institucionais Sites profissionais que apresentam sua empresa com credibilidade, organização e uma navegação simples para o visitante encontrar o que precisa.
+
+03 — E-commerce Lojas virtuais com experiência de compra fluida, catálogo organizado e integração com meios de pagamento, para vender online sem complicação.
+
+04 — Design Responsivo Todo projeto é desenvolvido para funcionar bem em qualquer tela — do celular ao desktop — sem perder qualidade visual ou usabilidade.
+
+05 — Performance & SEO Sites otimizados para carregar rápido e serem bem encontrados nos buscadores, porque velocidade e visibilidade também vendem.
+
+06 — Manutenção e Suporte Ajustes, atualizações e melhorias contínuas depois da entrega, para o site acompanhar o crescimento do seu negócio.
+
+6. PROJETOS
+
+Eyebrow: 03 — Projetos
+
+Título: Projetos em destaque
+
+(Você não me passou projetos específicos ainda — deixei a estrutura pronta com placeholders. Quando tiver 2–3 projetos para mostrar, me envie nome, tipo e link que eu escrevo as descrições.)
+
+Card modelo:
+
+[Nome do Projeto]
+[Categoria — ex: Site Institucional / Landing Page / E-commerce]
+Breve descrição do projeto, destacando o problema resolvido e o resultado entregue.
+Visitar site →
+[nomedosite.com — ano]
+
+Caso ainda não tenha projetos publicados, alternativa para essa seção: Título: Em construção do meu portfólio Texto: Estou desenvolvendo meus primeiros projetos profissionais. Em breve, novos cases estarão disponíveis aqui. Se quiser conhecer meu trabalho antes disso, entre em contato.
+
+7. MINHA ABORDAGEM / DIFERENCIAIS
+
+Eyebrow: 04 — Como eu trabalho
+
+01 — Aprendizado Constante Estou sempre estudando novas ferramentas e boas práticas para entregar projetos atualizados com o que há de melhor no desenvolvimento web.
+
+02 — Código Organizado Escrevo código limpo e estruturado, pensando em performance e em facilitar manutenções futuras.
+
+03 — Comunicação Clara Mantenho você informado em cada etapa do projeto, sem termos técnicos desnecessários e sem enrolação.
+
+04 — Comprometimento Trato cada projeto com a mesma dedicação, buscando entregar o melhor resultado possível dentro do combinado.
+
+8. CONTATO
+
+Eyebrow: CONTATO — 05 — Vamos conversar
+
+Título: Tem um projeto em mente?
+
+Texto de apoio: Me conte um pouco sobre sua ideia ou negócio. Vou avaliar com atenção e retornar com os próximos passos.
+
+E-mail: arthurstingnel.pro@gmail.com
+
+Botões:
+
+E-mail
+LinkedIn
+
+Redes sociais (rodapé):
+
+LinkedIn — https://www.linkedin.com/in/arthurstingnel/
+
+Rodapé (copyright): © 2026 Arthur Stingnel Sousa. Todos os direitos reservados.

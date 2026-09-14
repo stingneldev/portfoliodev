@@ -1,0 +1,147 @@
+Design System — Landing Page Arthur Stingnel (v2)
+
+Base: hero "terminal" (ref. 1) + seções de conteúdo estilo brutalista/editorial (ref. 2)
+
+Cores
+
+Paleta Principal
+
+Cor	Hex	Uso
+Preto-azulado (base)	
+#0A0E14	Background principal do site
+Azul-marinho profundo	
+#0A1428	Background do hero / seções alternadas
+Verde-limão neon (accent)	
+#C6FF4D	CTAs, links, destaques, ícone/badge de seção
+
+Paleta Secundária
+
+Cor	Hex	Uso
+Verde-petróleo (glow)	
+#1B6B5C	Gradiente radial de fundo no hero
+Azul elétrico	
+#4C6FFF	Accent secundário (tags de código, hover alternativo)
+Grid/linhas sutis	
+#1A1F26	Linhas de grade decorativas no fundo
+
+Cores de Suporte
+
+Cor	Hex	Uso
+Branco	
+#F5F7FA	Títulos principais
+Verde-claro pastel	
+#D9E8B8	Palavra de destaque em itálico dentro do título (como "growth")
+Cinza-claro	
+#9BA3AF	Texto de corpo, parágrafos secundários
+Cinza médio	
+#5C6470	Labels tipo "PROBLEM" / "SOLUTION" (caixa alta pequena)
+Verde-sucesso	
+#22C55E	Validação positiva de formulário
+Vermelho-erro	
+#EF4444	Validação de erro
+
+Regra de uso do accent: o verde-limão neon deve aparecer com moderação — só em CTAs, links e 1 ícone/badge de destaque por seção. Ele é o elemento que "chama o olho" para conversão.
+
+Tipografia
+
+Fontes sugeridas
+
+Headline / Títulos de seção (sans bold): Sora, General Sans ou Satoshi — peso 600–700
+Palavra de ênfase dentro do título (itálico serifado): Playfair Display Italic ou Fraunces Italic — só para 1 palavra-chave por título, como no exemplo "growth"
+Hero / trechos "código": JetBrains Mono ou Space Mono
+Corpo de texto / UI: Inter ou Manrope
+
+Hierarquia sugerida
+
+Nível	Fonte	Peso	Desktop	Mobile	Uso
+H1 (hero)	Mono	700	56–64px	32–36px	Nome/headline do hero
+H2 (seção)	Sans + itálico serifado na palavra-chave	600	40–48px	28–32px	Títulos de seção estilo "Custom data-driven, performance..."
+H3	Sans	600	22–26px	20px	Título de card/serviço
+Corpo	Sans	400	16–18px	15–16px	Parágrafos
+Label/eyebrow	Mono, caixa alta, letter-spacing 1–2px	500	13–14px	12–13px	"PROBLEM", "SOLUTION", // comentário
+
+Altura de linha: 1.15–1.25 para H1/H2 (blocos grandes e compactos como na ref.); 1.5–1.6 para corpo.
+
+Componentes
+
+Botões
+
+border-radius: 6px (mais reto, reforça o lado brutalista)
+Primário: fundo 
+#C6FF4D, texto 
+#0A0E14 (preto), hover escurece levemente o fundo (~8%)
+Secundário: borda 1px 
+#C6FF4D, fundo transparente, texto 
+#C6FF4D, hover preenche o fundo
+Padding: 14px 28px
+Sem sombra em repouso; hover pode ganhar leve box-shadow neon (0 0 20px rgba(198,255,77,0.25))
+
+Inputs de formulário
+
+Fundo: 
+#12161D
+Borda: 1px 
+#1A1F26; foco → borda 
+#C6FF4D + glow leve
+border-radius: 6px
+Padding: 12px 16px
+Label em estilo mono/eyebrow acima do campo
+
+Cards (serviços/projetos/problema-solução)
+
+Fundo: 
+#12161D, borda 1px 
+#1A1F26
+border-radius: 10px
+Padding: 28–32px
+Ícone/badge circular no topo (como o "alien" da ref.) com glow neon — usar para simbolizar cada serviço
+Hover: borda muda para 
+#C6FF4D, leve elevação (translateY(-4px))
+Estrutura sugerida em 2 colunas para blocos "Problema / Solução" (como na ref. 2), útil para cases de projeto
+
+Ícone/Badge de destaque
+
+Círculo pequeno (~48–56px), fundo escuro, ícone simples em outline verde-neon, com box-shadow de glow ao redor — usado como "selo" central entre título e conteúdo
+Estética Geral
+
+Border-radius
+
+Botões/inputs: 6px
+Cards: 10px
+Badge/ícone circular: 50%
+Foto de perfil (hero): 50%
+Tags/pills: 999px
+
+Sombras
+
+Cards em repouso: 0 4px 14px rgba(0,0,0,0.4) (mais escura/dramática, combina com fundo preto)
+Glow neon (CTA hover, badges): 0 0 20px rgba(198,255,77,0.3)
+Glow azul-petróleo (hero, decorativo): gradiente radial, não sombra tradicional
+
+Textura de fundo
+
+Grid sutil (linhas finas 
+#1A1F26 a cada 40–60px) sobre o fundo preto em seções de conteúdo — reforça o lado "técnico/brutalista"
+Hero mantém o gradiente radial azul/verde-petróleo, sem grid
+
+Espaçamentos (escala base 8px)
+
+Token	Valor	Uso
+space-xs	8px	Ícone + texto
+space-sm	16px	Padding interno pequeno
+space-md	24px	Padding de cards
+space-lg	48px	Entre blocos dentro de uma seção
+space-xl	100–140px	Entre seções (a ref. 2 usa bastante respiro vertical)
+
+Layout/Grid
+
+Container máximo: 1200–1280px
+Blocos "Problema/Solução" em 2 colunas (desktop) → empilhado (mobile)
+Margem lateral mobile: 24px
+
+Princípios de usabilidade (conversão)
+
+Accent neon reservado só para ações e ícones-chave — nunca em texto corrido, para não cansar a leitura
+Título de cada seção com 1 palavra em destaque (itálico) para guiar o olho ao benefício principal
+Estrutura "Problema → Solução" é ótima para a seção de Projetos/Cases: mostra raciocínio, não só resultado bonito
+Contraste alto (fundo quase preto + texto branco/verde-neon) melhora legibilidade e reforça a percepção "tech/moderno"
