@@ -10,6 +10,11 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('anim');
+  }
+</script>
 <style>
   /* ============ Design tokens ============ */
   :root{
@@ -779,6 +784,14 @@
     .hero-role{font-size:22px;}
     .section-title{font-size:44px;}
   }
+
+  /* ============ Animations (anime.js) ============ */
+  .anim :is(
+    .logo, .nav-links li, .header-cta:not(.mobile-cta), .menu-toggle,
+    .terminal-line, .hero-name, .hero-role, .hero-code, .hero-support, .hero-ctas, .hero-photo-wrap,
+    .eyebrow, .section-title, .about-text p, .info-row, .stat-card, .card, .project-card,
+    .contact-support, .contact-email, .contact-ctas .btn
+  ):not(.is-in){opacity:0;}
 </style>
 </head>
 <body>
@@ -1137,6 +1150,174 @@
         ticking = true;
       }
     }, { passive: true });
+  })();
+</script>
+
+<script src="assets/anime.umd.min.js"></script>
+<script>
+  (function(){
+    var root = document.documentElement;
+    if (!root.classList.contains('anim')) return;
+    if (!window.anime || !('IntersectionObserver' in window)) {
+      root.classList.remove('anim');
+      return;
+    }
+
+    try {
+      var animate = window.anime.animate;
+      var stagger = window.anime.stagger;
+
+      function all(sel, ctx){ return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); }
+
+      function prepare(els){
+        els.forEach(function(el){
+          el.style.opacity = '0';
+          el.style.transition = 'none';
+          el.classList.add('is-in');
+        });
+      }
+
+      function release(els){
+        els.forEach(function(el){
+          el.style.removeProperty('opacity');
+          el.style.removeProperty('transform');
+          el.style.removeProperty('transition');
+        });
+      }
+
+      function reveal(els, params){
+        els = els.filter(Boolean);
+        if (!els.length) return;
+        prepare(els);
+        var opts = {
+          opacity: [0, 1],
+          translateY: [28, 0],
+          duration: 800,
+          delay: stagger(90),
+          ease: 'outExpo',
+          onComplete: function(){ release(els); }
+        };
+        for (var k in params) { opts[k] = params[k]; }
+        animate(els, opts);
+      }
+
+      function onView(el, cb){
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (entry.isIntersecting) {
+              io.unobserve(entry.target);
+              cb();
+            }
+          });
+        }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+        io.observe(el);
+      }
+
+      /* ---- Header + Hero (on load) ---- */
+      reveal(
+        all('.logo, .nav-links li, .header-cta:not(.mobile-cta), .menu-toggle'),
+        { translateY: [-16, 0], duration: 700, delay: stagger(70, { start: 100 }) }
+      );
+
+      reveal(
+        all('.terminal-line, .hero-name, .hero-role, .hero-code, .hero-support, .hero-ctas'),
+        { translateY: [32, 0], duration: 900, delay: stagger(110, { start: 250 }) }
+      );
+
+      reveal(
+        all('.hero-photo-wrap'),
+        { translateY: [0, 0], scale: [0.88, 1], duration: 1200, delay: 400 }
+      );
+
+      var media = document.querySelector('.hero-media');
+      if (media) {
+        animate(media, {
+          translateY: [0, -10],
+          duration: 3200,
+          ease: 'inOutSine',
+          loop: true,
+          alternate: true
+        });
+      }
+
+      /* ---- Section headings ---- */
+      all('main section:not(.hero)').forEach(function(section){
+        var head = all('.eyebrow, .section-title', section);
+        var trigger = section.querySelector('.section-title');
+        if (!head.length || !trigger) return;
+        onView(trigger, function(){
+          reveal(head, { delay: stagger(120), duration: 900 });
+        });
+      });
+
+      /* ---- About ---- */
+      var aboutText = document.querySelector('.about-text');
+      if (aboutText) {
+        onView(aboutText, function(){
+          reveal(all('p, .info-row', aboutText), { delay: stagger(110) });
+        });
+      }
+
+      /* ---- Stats + counters ---- */
+      var statsGrid = document.querySelector('.stats-grid');
+      if (statsGrid) {
+        var counters = all('.stat-number', statsGrid).map(function(el){
+          var m = el.textContent.trim().match(/^(\D*)(\d+)(\D*)$/);
+          if (!m) return null;
+          var c = { el: el, pre: m[1], n: parseInt(m[2], 10), post: m[3], state: { v: 0 } };
+          el.textContent = c.pre + '0' + c.post;
+          return c;
+        }).filter(Boolean);
+
+        onView(statsGrid, function(){
+          reveal(all('.stat-card', statsGrid), { delay: stagger(120), translateY: [24, 0] });
+          counters.forEach(function(c, i){
+            animate(c.state, {
+              v: [0, c.n],
+              duration: 1800,
+              delay: 250 + i * 120,
+              ease: 'outExpo',
+              onUpdate: function(){ c.el.textContent = c.pre + Math.round(c.state.v) + c.post; },
+              onComplete: function(){ c.el.textContent = c.pre + c.n + c.post; }
+            });
+          });
+        });
+      }
+
+      /* ---- Cards (services, approach, projects) ---- */
+      all('.cards-grid, .projects-grid').forEach(function(grid){
+        var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length || 1;
+        all('.card, .project-card', grid).forEach(function(card, i){
+          onView(card, function(){
+            var badge = card.querySelector('.card-badge');
+            reveal([card], { delay: (i % cols) * 110 });
+            if (badge) {
+              animate(badge, {
+                scale: [0.5, 1],
+                duration: 700,
+                delay: (i % cols) * 110 + 250,
+                ease: 'outBack',
+                onComplete: function(){ badge.style.removeProperty('transform'); }
+              });
+            }
+          });
+        });
+      });
+
+      /* ---- Contact ---- */
+      var contactSupport = document.querySelector('.contact-support');
+      if (contactSupport) {
+        onView(contactSupport, function(){
+          reveal(
+            [contactSupport, document.querySelector('.contact-email')].concat(all('.contact-ctas .btn')),
+            { delay: stagger(110) }
+          );
+        });
+      }
+    } catch (err) {
+      root.classList.remove('anim');
+      if (window.console) { console.error('Animation setup failed:', err); }
+    }
   })();
 </script>
 
