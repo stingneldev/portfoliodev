@@ -32,7 +32,8 @@ Single static page, in Brazilian Portuguese (pt-BR). Primary action is contact, 
 ## Brand Commitments
 
 - Name shown as "Arthur Stingnel" (surname "Sousa" deliberately dropped from visible text); logo is "AS.".
-- Arthur chose to keep the current design system fixed for future work: dark base, a single lime accent reserved for calls to action, and the existing mono, sans, and italic-serif type pairing as documented in `Design System.txt`.
+- Arthur asked for a palette change and allowed the design system to change: a deep navy base (#0A192F family, dark and closed rather than bright blue) balanced with a warm sand tone, in a light and a dark theme (user toggle plus system preference), ice-white accent in the dark theme (no color accent; emphasis comes from contrast) and deep navy in the light theme, reserved for calls to action and key icons. `Design System.txt` predates this and is out of date on color.
+- Type pairing now: Sora for headings, Manrope for text, JetBrains Mono for code and labels, Playfair Display Italic for one emphasized word per title.
 
 ## Evidence on Hand
 
