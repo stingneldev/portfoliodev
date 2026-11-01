@@ -2,9 +2,14 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Arthur Stingnel - Desenvolvedor Web</title>
 <meta name="description" content="Sites e landing pages modernos, rápidos e pensados para gerar resultado.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Arthur Stingnel - Desenvolvedor Web">
+<meta property="og:description" content="Sites e landing pages modernos, rápidos e pensados para gerar resultado.">
+<meta name="theme-color" content="#0A0E14">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -16,6 +21,36 @@
   }
 </script>
 <style>
+  /* ============ Fonts (self-hosted) ============ */
+  @font-face{
+    font-family:'Manrope';
+    src:url('assets/fonts/manrope-latin-wght-normal.woff2') format('woff2');
+    font-weight:200 800;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Sora';
+    src:url('assets/fonts/sora-latin-wght-normal.woff2') format('woff2');
+    font-weight:100 800;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'JetBrains Mono';
+    src:url('assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2');
+    font-weight:100 800;
+    font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:'Playfair Display';
+    src:url('assets/fonts/playfair-display-latin-wght-italic.woff2') format('woff2');
+    font-weight:400 900;
+    font-style:italic;
+    font-display:swap;
+  }
+
   /* ============ Design tokens ============ */
   :root{
     --bg-base:#0A0E14;
@@ -27,8 +62,9 @@
     --grid-line:#1A1F26;
     --white:#F5F7FA;
     --pastel-green:#D9E8B8;
-    --gray-light:#9BA3AF;
-    --gray-mid:#5C6470;
+    --gray-light:#A9B1BD;
+    --gray-mid:#858E9B;
+    --blue-text:#7F97FF;
     --success:#22C55E;
     --error:#EF4444;
     --card-bg:#12161D;
@@ -46,8 +82,9 @@
     --container-max:1280px;
 
     --font-mono:'JetBrains Mono','Space Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
-    --font-sans:'Inter','Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --font-serif-italic:'Georgia','Times New Roman',serif;
+    --font-sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-display:'Sora','Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --font-serif-italic:'Playfair Display','Georgia','Times New Roman',serif;
   }
 
   *,*::before,*::after{box-sizing:border-box;}
@@ -108,32 +145,13 @@
     top:0;
   }
 
-  .eyebrow{
-    font-family:var(--font-mono);
-    text-transform:uppercase;
-    letter-spacing:1.5px;
-    font-size:13px;
-    font-weight:500;
-    color:var(--gray-mid);
-    display:inline-flex;
-    align-items:center;
-    gap:var(--space-xs);
-    margin:0 0 var(--space-sm);
-  }
-  .eyebrow::before{
-    content:"";
-    width:8px;height:8px;
-    border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 10px rgba(198,255,77,0.6);
-    flex-shrink:0;
-  }
-
   .section-title{
-    font-family:var(--font-sans);
+    font-family:var(--font-display);
     font-weight:600;
     font-size:32px;
     line-height:1.2;
+    letter-spacing:-0.02em;
+    text-wrap:balance;
     color:var(--white);
     margin:0 0 var(--space-lg);
   }
@@ -180,7 +198,7 @@
   .btn-primary:hover,
   .btn-primary:focus-visible{
     background:#b3eb3f;
-    box-shadow:0 0 20px rgba(198,255,77,0.25);
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
   }
   .btn-secondary{
     background:transparent;
@@ -191,7 +209,7 @@
   .btn-secondary:focus-visible{
     background:var(--accent);
     color:var(--accent-ink);
-    box-shadow:0 0 20px rgba(198,255,77,0.25);
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
   }
   .btn:active{transform:translateY(1px);}
 
@@ -236,6 +254,9 @@
     font-size:17px;
     color:var(--white);
     letter-spacing:1px;
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
   }
   .logo span{color:var(--accent);}
 
@@ -259,6 +280,12 @@
     padding:8px 4px;
     position:relative;
     transition:color .2s ease;
+  }
+  .nav-links a.is-active{
+    color:var(--white);
+  }
+  .nav-links a.is-active::after{
+    width:100%;
   }
   .nav-links a:hover,
   .nav-links a:focus-visible{
@@ -352,34 +379,35 @@
     font-family:var(--font-mono);
     font-weight:600;
     font-size:20px;
-    color:var(--electric-blue);
-    margin:0 0 var(--space-md);
+    color:var(--blue-text);
+    margin:0 0 var(--space-sm);
   }
   .hero-code{
     font-family:var(--font-mono);
-    font-size:14px;
+    font-size:13px;
     line-height:1.7;
     color:var(--gray-light);
     text-align:left;
-    background:var(--card-bg);
-    border:1px solid var(--grid-line);
-    border-radius:var(--radius-card);
-    padding:var(--space-md);
-    margin:0 0 var(--space-md);
+    background:transparent;
+    border:0;
+    border-left:1px solid var(--grid-line);
+    border-radius:0;
+    padding:2px 0 2px var(--space-sm);
+    margin:var(--space-lg) 0 0;
     max-width:560px;
     overflow-x:auto;
     white-space:pre-wrap;
     word-break:break-word;
   }
   .hero-code .comment{color:var(--gray-mid);}
-  .hero-code .code-const{color:var(--electric-blue);}
+  .hero-code .code-const{color:var(--blue-text);}
   .hero-code .code-string{color:var(--pastel-green);}
 
   .hero-support{
-    font-size:17px;
-    color:var(--gray-light);
+    font-size:19px;
+    color:#D3D9E2;
     max-width:520px;
-    margin:0 0 var(--space-lg);
+    margin:0 0 var(--space-md);
   }
   .hero-ctas{
     display:flex;
@@ -431,16 +459,19 @@
   .marquee-track{
     display:flex;
     width:max-content;
-    animation:scroll-marquee 32s linear infinite;
+    animation:scroll-marquee 56s linear infinite;
   }
   .marquee-track span{
-    font-family:var(--font-mono);
-    font-size:14px;
+    font-family:var(--font-sans);
+    font-size:16px;
+    font-weight:500;
     color:var(--gray-light);
     white-space:nowrap;
-    padding:0 24px;
+    padding:0 28px;
   }
-  .marquee-track span.dot{color:var(--accent);}
+  .marquee-track span.dot{color:var(--gray-mid);}
+  .marquee-section:hover .marquee-track,
+  .marquee-section:focus-within .marquee-track{animation-play-state:paused;}
   @keyframes scroll-marquee{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
@@ -490,26 +521,29 @@
 
   .stats-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:var(--space-md);
+    grid-template-columns:1fr;
+    gap:var(--space-sm);
+    align-self:start;
   }
   .stat-card{
+    display:flex;
+    align-items:baseline;
+    gap:var(--space-md);
     background:var(--card-bg);
     border:1px solid var(--grid-line);
     border-radius:var(--radius-card);
-    padding:var(--space-md);
-    text-align:center;
+    padding:20px var(--space-md);
   }
   .stat-number{
     font-family:var(--font-mono);
     font-weight:700;
-    font-size:32px;
-    color:var(--accent);
-    display:block;
-    margin-bottom:4px;
+    font-size:36px;
+    line-height:1;
+    color:var(--white);
+    min-width:3.4ch;
   }
   .stat-label{
-    font-size:13px;
+    font-size:15px;
     color:var(--gray-light);
   }
 
@@ -541,16 +575,22 @@
     justify-content:center;
     font-family:var(--font-mono);
     font-weight:700;
-    color:var(--accent);
-    box-shadow:0 0 20px rgba(198,255,77,0.15);
+    color:var(--white);
     margin-bottom:var(--space-md);
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .card:hover .card-badge,
+  .card:focus-within .card-badge{
+    color:var(--accent);
+    border-color:var(--accent);
   }
   .card-badge svg{
     width:22px;
     height:22px;
-    color:var(--accent);
+    color:currentColor;
   }
   .card h3{
+    font-family:var(--font-display);
     font-size:20px;
     font-weight:600;
     margin:0 0 10px;
@@ -560,6 +600,45 @@
     font-size:15px;
     color:var(--gray-light);
     margin:0;
+  }
+
+  /* ============ Approach (compact list) ============ */
+  .approach-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    column-gap:var(--space-lg);
+    border-top:1px solid var(--grid-line);
+  }
+  .approach-item{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    column-gap:20px;
+    align-items:start;
+    padding:28px 0;
+    border-bottom:1px solid var(--grid-line);
+  }
+  .approach-item .card-badge{
+    width:44px;height:44px;
+    margin:0;
+    grid-row:1 / span 2;
+  }
+  .approach-item:hover .card-badge,
+  .approach-item:focus-within .card-badge{
+    color:var(--accent);
+    border-color:var(--accent);
+  }
+  .approach-item h3{
+    font-family:var(--font-display);
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 6px;
+    color:var(--white);
+  }
+  .approach-item p{
+    font-size:15px;
+    color:var(--gray-light);
+    margin:0;
+    max-width:46ch;
   }
 
   /* ============ Projects ============ */
@@ -591,6 +670,7 @@
     color:var(--gray-mid);
   }
   .project-card h3{
+    font-family:var(--font-display);
     font-size:22px;
     font-weight:600;
     margin:0;
@@ -608,7 +688,8 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    margin-top:8px;
+    margin-top:4px;
+    min-height:44px;
     transition:gap .2s ease;
   }
   .project-link:hover,
@@ -655,11 +736,16 @@
   }
   .contact-email{
     font-family:var(--font-mono);
-    font-size:18px;
-    color:var(--accent);
-    display:inline-block;
-    margin-bottom:var(--space-lg);
+    font-size:17px;
+    color:var(--white);
+    margin:0 0 var(--space-lg);
     word-break:break-all;
+    user-select:all;
+  }
+  .section-cta{
+    display:flex;
+    justify-content:center;
+    margin-top:var(--space-lg);
   }
   .contact-ctas{
     display:flex;
@@ -680,10 +766,18 @@
     flex-wrap:wrap;
     gap:var(--space-md);
   }
+  .footer-social{
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--space-md);
+  }
   .footer-social a{
     color:var(--gray-light);
     font-size:14px;
     font-weight:500;
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
     transition:color .2s ease;
   }
   .footer-social a:hover,
@@ -753,11 +847,13 @@
     }
     .header-cta.mobile-cta .btn{width:100%;}
 
-    .hero{padding:104px 0 48px;}
+    .hero{padding:84px 0 40px;}
+    .hero-inner{gap:var(--space-md);}
+    .hero-photo-wrap{max-width:136px;}
     .hero-name{font-size:34px;}
-    .hero-role{font-size:18px;}
-    .hero-code{font-size:12.5px;padding:var(--space-sm);}
-    .hero-support{font-size:16px;}
+    .hero-role{font-size:18px;margin-bottom:var(--space-sm);}
+    .hero-code{font-size:12px;padding:2px 0 2px 12px;margin-top:var(--space-md);}
+    .hero-support{font-size:18px;margin-bottom:var(--space-md);}
     .hero-ctas{flex-direction:column;align-items:stretch;}
     .hero-ctas .btn{width:100%;}
 
@@ -765,6 +861,9 @@
 
     .stats-grid{grid-template-columns:1fr;}
     .cards-grid{grid-template-columns:1fr;}
+    .approach-list{grid-template-columns:1fr;}
+
+    body.menu-open{overflow:hidden;}
 
     .info-row{flex-direction:column;gap:4px;}
     .info-row dd{text-align:left;}
@@ -785,11 +884,45 @@
     .section-title{font-size:44px;}
   }
 
+  /* ============ Floating WhatsApp (mobile) ============ */
+  .wa-float{display:none;}
+  @media (max-width:767px){
+    .wa-float{
+      position:fixed;
+      right:16px;
+      bottom:max(16px, env(safe-area-inset-bottom));
+      z-index:90;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:48px;
+      padding:0 18px;
+      background:var(--accent);
+      color:var(--accent-ink);
+      font-weight:600;
+      font-size:15px;
+      border-radius:var(--radius-btn);
+      box-shadow:0 8px 24px rgba(0,0,0,0.45);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(12px);
+      pointer-events:none;
+      transition:opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+    }
+    .wa-float.is-shown{
+      opacity:1;
+      visibility:visible;
+      transform:none;
+      pointer-events:auto;
+      transition-delay:0s;
+    }
+  }
+
   /* ============ Animations (anime.js) ============ */
   .anim :is(
     .logo, .nav-links li, .header-cta:not(.mobile-cta), .menu-toggle,
     .terminal-line, .hero-name, .hero-role, .hero-code, .hero-support, .hero-ctas, .hero-photo-wrap,
-    .eyebrow, .section-title, .about-text p, .info-row, .stat-card, .card, .project-card,
+    .section-title, .about-text p, .info-row, .stat-card, .card, .approach-item, .project-card,
     .contact-support, .contact-email, .contact-ctas .btn
   ):not(.is-in){opacity:0;}
 </style>
@@ -811,6 +944,7 @@
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#abordagem">Abordagem</a></li>
       </ul>
       <div class="header-cta mobile-cta">
         <a href="#contato" class="btn btn-primary">Contato</a>
@@ -833,16 +967,16 @@
         <h1 class="hero-name">Arthur Stingnel</h1>
         <p class="hero-role">&gt; Desenvolvedor Web</p>
 
-        <pre class="hero-code"><code><span class="comment">// Dedicado e em constante evolução</span>
-<span class="comment">// desenvolvedor web com +2 anos me especializando na área.</span>
-<span class="code-const">const</span> LinkedIn = <span class="code-string">"arthurstingnel"</span></code></pre>
-
         <p class="hero-support">Sites e landing pages modernos, rápidos e pensados para gerar resultado.</p>
 
         <div class="hero-ctas">
           <a href="#projetos" class="btn btn-primary">Ver projetos →</a>
           <a href="#contato" class="btn btn-secondary">Fale comigo →</a>
         </div>
+
+        <pre class="hero-code"><code><span class="comment">// Dedicado e em constante evolução</span>
+<span class="comment">// desenvolvedor web com +2 anos me especializando na área.</span>
+<span class="code-const">const</span> LinkedIn = <span class="code-string">"arthurstingnel"</span></code></pre>
       </div>
 
       <div class="hero-media">
@@ -870,7 +1004,6 @@
   <!-- SOBRE -->
   <section id="sobre" class="bg-grid" aria-labelledby="sobre-titulo">
     <div class="container">
-      <p class="eyebrow">01 - Perfil Profissional</p>
       <h2 id="sobre-titulo" class="section-title">Olá, sou <em>Arthur Stingnel</em>.</h2>
 
       <div class="about-grid">
@@ -878,10 +1011,6 @@
           <p>Desenvolvedor web com mais de 2 anos me dedicando à área, com foco em criar sites e landing pages funcionais, bem estruturados e com boa experiência de uso. Cursando Sistemas de Informação no IFES - Colatina, venho construindo minha base técnica unindo teoria acadêmica, cursos especializados e prática constante em projetos reais.</p>
 
           <dl class="info-list">
-            <div class="info-row">
-              <dt>Experiência</dt>
-              <dd>+2 anos na área</dd>
-            </div>
             <div class="info-row">
               <dt>Formação Técnica</dt>
               <dd>HTML e CSS - Curso em Vídeo</dd>
@@ -918,7 +1047,6 @@
   <!-- SERVIÇOS -->
   <section id="servicos" aria-labelledby="servicos-titulo">
     <div class="container">
-      <p class="eyebrow">02 - Serviços</p>
       <h2 id="servicos-titulo" class="section-title">O que eu <em>faço</em></h2>
 
       <div class="cards-grid">
@@ -976,7 +1104,6 @@
   <!-- PROJETOS -->
   <section id="projetos" class="bg-grid" aria-labelledby="projetos-titulo">
     <div class="container">
-      <p class="eyebrow">03 - Projetos</p>
       <h2 id="projetos-titulo" class="section-title">Projetos em <em>destaque</em></h2>
 
       <div class="projects-grid">
@@ -985,7 +1112,7 @@
           <h3>Beiço de Pulga</h3>
           <p>Site institucional para cervejaria artesanal capixaba premiada, apresentando o catálogo de cervejas, a história da marca e os pontos de venda com uma identidade visual que reforça o caráter artesanal da produção.</p>
           <a href="https://beico-de-pulga.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Visitar o site Beiço de Pulga (abre em nova aba)">Visitar site →</a>
-          <p class="project-meta">beico-de-pulga.vercel.app — 2025</p>
+          <p class="project-meta">beico-de-pulga.vercel.app - 2025</p>
         </article>
 
         <article class="project-card">
@@ -993,8 +1120,12 @@
           <h3>Dengo Pet Shop</h3>
           <p>Landing page para pet shop com foco em conversão, reunindo serviços de banho e tosa, produtos, depoimentos e perguntas frequentes, com agendamento on-line e atendimento direto pelo WhatsApp.</p>
           <a href="https://dengo-petshop.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Visitar o site Dengo Pet Shop (abre em nova aba)">Visitar site →</a>
-          <p class="project-meta">dengo-petshop.vercel.app — 2026</p>
+          <p class="project-meta">dengo-petshop.vercel.app - 2026</p>
         </article>
+      </div>
+
+      <div class="section-cta">
+        <a href="#contato" class="btn btn-primary">Fale comigo →</a>
       </div>
     </div>
   </section>
@@ -1002,11 +1133,10 @@
   <!-- ABORDAGEM / DIFERENCIAIS -->
   <section id="abordagem" aria-labelledby="abordagem-titulo">
     <div class="container">
-      <p class="eyebrow">04 - Como eu trabalho</p>
       <h2 id="abordagem-titulo" class="section-title">Minha <em>abordagem</em></h2>
 
-      <div class="cards-grid">
-        <article class="card">
+      <div class="approach-list">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1.5 6-1.5 8 0v14c-2-1.5-5-1.5-8 0V5Z"/><path d="M20 5c-3-1.5-6-1.5-8 0v14c2-1.5 5-1.5 8 0V5Z"/></svg>
           </div>
@@ -1014,7 +1144,7 @@
           <p>Estou sempre estudando novas ferramentas e boas práticas para entregar projetos atualizados com o que há de melhor no desenvolvimento web.</p>
         </article>
 
-        <article class="card">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 4 12l5 6"/><path d="M15 6l5 6-5 6"/></svg>
           </div>
@@ -1022,7 +1152,7 @@
           <p>Escrevo código limpo e estruturado, pensando em performance e em facilitar manutenções futuras.</p>
         </article>
 
-        <article class="card">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5Z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
           </div>
@@ -1030,7 +1160,7 @@
           <p>Mantenho você informado em cada etapa do projeto, sem termos técnicos desnecessários e sem enrolação.</p>
         </article>
 
-        <article class="card">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
@@ -1038,7 +1168,7 @@
           <p>Trato cada projeto com a mesma dedicação, buscando entregar o melhor resultado possível dentro do combinado.</p>
         </article>
 
-        <article class="card">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.8" fill="currentColor" stroke="none"/></svg>
           </div>
@@ -1046,7 +1176,7 @@
           <p>Cada decisão de design e código é pensada para gerar resultado real para o seu negócio, não apenas um site bonito.</p>
         </article>
 
-        <article class="card">
+        <article class="approach-item">
           <div class="card-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><path d="M8 15l2.5 2.5L16 12"/></svg>
           </div>
@@ -1060,11 +1190,10 @@
   <!-- CONTATO -->
   <section id="contato" class="contact-section bg-grid" aria-labelledby="contato-titulo">
     <div class="container contact-inner">
-      <p class="eyebrow" style="justify-content:center;">CONTATO - 05 - Vamos conversar</p>
       <h2 id="contato-titulo" class="section-title">Tem um projeto em <em>mente</em>?</h2>
       <p class="contact-support">Me conte um pouco sobre sua ideia ou negócio. Vou avaliar com atenção e retornar com os próximos passos.</p>
 
-      <a href="mailto:arthurstingnel.pro@gmail.com" class="contact-email">arthurstingnel.pro@gmail.com</a>
+      <p class="contact-email">arthurstingnel.pro@gmail.com</p>
 
       <div class="contact-ctas">
         <a href="https://wa.me/5527999872446" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Arthur Stingnel no WhatsApp (abre em nova aba)">
@@ -1089,10 +1218,17 @@
   <div class="container footer-inner">
     <ul class="footer-social">
       <li><a href="https://www.linkedin.com/in/arthurstingnel/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Arthur Stingnel (abre em nova aba)">LinkedIn</a></li>
+      <li><a href="https://wa.me/5527999872446" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Arthur Stingnel (abre em nova aba)">WhatsApp</a></li>
+      <li><a href="mailto:arthurstingnel.pro@gmail.com" aria-label="Enviar e-mail para Arthur Stingnel">E-mail</a></li>
     </ul>
     <p class="footer-copy">© 2026 Arthur Stingnel. Todos os direitos reservados.</p>
   </div>
 </footer>
+
+<a href="https://wa.me/5527999872446" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Conversar com Arthur Stingnel no WhatsApp (abre em nova aba)">
+  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path fill="currentColor" stroke="none" d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .6.5.2.5.6 1.4.6 1.5.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.2-.3.3-.1.6.2.4.9 1.4 1.9 1.9.3.2.5.1.6-.1.2-.2.4-.5.6-.7.2-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.3.2.4.3 0 .2 0 .8-.3 1.2-.3.5-1.3.9-1.8.9-.5 0-1.2-.1-3-1.3-1.9-1.2-2.9-3-3-3.2-.1-.2-.7-1-.7-1.9 0-.9.4-1.3.6-1.5Z"/></svg>
+  WhatsApp
+</a>
 
 <script>
   (function(){
@@ -1100,12 +1236,14 @@
     var nav = document.getElementById('primary-navigation');
 
     function closeMenu(){
+      document.body.classList.remove('menu-open');
       toggle.setAttribute('aria-expanded', 'false');
       nav.removeAttribute('data-open');
       toggle.setAttribute('aria-label', 'Abrir menu de navegação');
     }
 
     function openMenu(){
+      document.body.classList.add('menu-open');
       toggle.setAttribute('aria-expanded', 'true');
       nav.setAttribute('data-open', 'true');
       toggle.setAttribute('aria-label', 'Fechar menu de navegação');
@@ -1151,8 +1289,64 @@
       }
     }, { passive: true });
   })();
+
+  (function(){
+    var fab = document.querySelector('.wa-float');
+    var hero = document.getElementById('top');
+    var contact = document.getElementById('contato');
+    if (!fab || !hero || !contact || !('IntersectionObserver' in window)) return;
+
+    var heroVisible = true;
+    var contactVisible = false;
+
+    function update(){
+      fab.classList.toggle('is-shown', !heroVisible && !contactVisible);
+    }
+
+    new IntersectionObserver(function(entries){
+      heroVisible = entries[0].isIntersecting;
+      update();
+    }).observe(hero);
+
+    new IntersectionObserver(function(entries){
+      contactVisible = entries[0].isIntersecting;
+      update();
+    }).observe(contact);
+  })();
 </script>
 
+<script>
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+
+    var current = null;
+    function setActive(id){
+      if (id === current) return;
+      current = id;
+      links.forEach(function(a){
+        var on = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('is-active', on);
+        if (on) { a.setAttribute('aria-current', 'location'); } else { a.removeAttribute('aria-current'); }
+      });
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { setActive(entry.target.id); }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+
+    links.forEach(function(a){
+      var target = document.getElementById(a.getAttribute('href').slice(1));
+      if (target) { io.observe(target); }
+    });
+    ['top', 'contato'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) { io.observe(el); }
+    });
+  })();
+</script>
 <script src="assets/anime.umd.min.js"></script>
 <script>
   (function(){
@@ -1191,9 +1385,9 @@
         prepare(els);
         var opts = {
           opacity: [0, 1],
-          translateY: [28, 0],
-          duration: 800,
-          delay: stagger(90),
+          translateY: [14, 0],
+          duration: 600,
+          delay: stagger(60),
           ease: 'outExpo',
           onComplete: function(){ release(els); }
         };
@@ -1221,32 +1415,20 @@
 
       reveal(
         all('.terminal-line, .hero-name, .hero-role, .hero-code, .hero-support, .hero-ctas'),
-        { translateY: [32, 0], duration: 900, delay: stagger(110, { start: 250 }) }
+        { translateY: [36, 0], duration: 1000, delay: stagger(120, { start: 250 }) }
       );
 
       reveal(
         all('.hero-photo-wrap'),
-        { translateY: [0, 0], scale: [0.88, 1], duration: 1200, delay: 400 }
+        { translateY: [0, 0], scale: [0.86, 1], duration: 1400, delay: 450 }
       );
-
-      var media = document.querySelector('.hero-media');
-      if (media) {
-        animate(media, {
-          translateY: [0, -10],
-          duration: 3200,
-          ease: 'inOutSine',
-          loop: true,
-          alternate: true
-        });
-      }
 
       /* ---- Section headings ---- */
       all('main section:not(.hero)').forEach(function(section){
-        var head = all('.eyebrow, .section-title', section);
-        var trigger = section.querySelector('.section-title');
-        if (!head.length || !trigger) return;
-        onView(trigger, function(){
-          reveal(head, { delay: stagger(120), duration: 900 });
+        var head = all('.section-title', section);
+        if (!head.length) return;
+        onView(head[0], function(){
+          reveal(head);
         });
       });
 
@@ -1254,7 +1436,7 @@
       var aboutText = document.querySelector('.about-text');
       if (aboutText) {
         onView(aboutText, function(){
-          reveal(all('p, .info-row', aboutText), { delay: stagger(110) });
+          reveal(all('p, .info-row', aboutText));
         });
       }
 
@@ -1270,7 +1452,7 @@
         }).filter(Boolean);
 
         onView(statsGrid, function(){
-          reveal(all('.stat-card', statsGrid), { delay: stagger(120), translateY: [24, 0] });
+          reveal(all('.stat-card', statsGrid));
           counters.forEach(function(c, i){
             animate(c.state, {
               v: [0, c.n],
@@ -1285,21 +1467,11 @@
       }
 
       /* ---- Cards (services, approach, projects) ---- */
-      all('.cards-grid, .projects-grid').forEach(function(grid){
+      all('.cards-grid, .projects-grid, .approach-list').forEach(function(grid){
         var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length || 1;
-        all('.card, .project-card', grid).forEach(function(card, i){
+        all('.card, .project-card, .approach-item', grid).forEach(function(card, i){
           onView(card, function(){
-            var badge = card.querySelector('.card-badge');
-            reveal([card], { delay: (i % cols) * 110 });
-            if (badge) {
-              animate(badge, {
-                scale: [0.5, 1],
-                duration: 700,
-                delay: (i % cols) * 110 + 250,
-                ease: 'outBack',
-                onComplete: function(){ badge.style.removeProperty('transform'); }
-              });
-            }
+            reveal([card], { delay: (i % cols) * 70 });
           });
         });
       });
@@ -1310,7 +1482,7 @@
         onView(contactSupport, function(){
           reveal(
             [contactSupport, document.querySelector('.contact-email')].concat(all('.contact-ctas .btn')),
-            { delay: stagger(110) }
+            { delay: stagger(70) }
           );
         });
       }
