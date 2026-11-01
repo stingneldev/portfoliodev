@@ -12,7 +12,7 @@ Owners of small businesses who need a website, landing page, or online store and
 
 ## Product Purpose
 
-A one-page personal portfolio and lead-generation site for Arthur Stingnel, a web developer in Colatina, ES, Brazil, with 2+ years of experience and a student at IFES (Sistemas de Informação). It shows what Arthur builds, proves it with real projects, and turns a visitor into a conversation. Success is a business owner contacting Arthur about a project.
+A one-page personal portfolio and lead-generation site for Arthur Stingnel, a freelance web developer based in Colatina, ES, Brazil, who takes projects from anywhere (the hero and copy must not limit him to the local region), with 2+ years of experience and a student at IFES (Sistemas de Informação). It shows what Arthur builds, proves it with real projects, and turns a visitor into a conversation. Success is a business owner contacting Arthur about a project.
 
 ## Positioning
 
@@ -26,7 +26,7 @@ Single static page, in Brazilian Portuguese (pt-BR). Primary action is contact, 
 
 - Services offered: landing pages, institutional sites, e-commerce, responsive design, performance and SEO, maintenance and support.
 - Delivered as a single HTML file with inline CSS and JS plus local assets in `assets/`; the animation library (anime.js) is vendored locally, with no CDN or runtime external dependency.
-- Copy lives in `Copy.txt` and the visual rules in `Design System.txt`; the page's wording is the source of truth and was not to be reworded when first built.
+- Copy started in `Copy.txt` and the visual rules in `Design System.txt`, both now partly outdated: the hero, the numbers strip, the "Como funciona" steps and the contact block were rewritten in later rounds. The page itself is the source of truth. Do not invent proof, numbers or promises (response times, prices) that Arthur has not confirmed.
 - The headline numbers on the page (+20 projects delivered, 100% client satisfaction, 2+ years) were provided by Arthur.
 
 ## Brand Commitments
